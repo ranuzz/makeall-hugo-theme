@@ -1,0 +1,12 @@
+{{ if .Params.showedits }}
+<div class="flex items-center justify-left pl4 pb2 bg-moon-gray black">
+    <ul class="list pl0 measure">
+        <li class="lh-copy pv3 ba bl-0 bt-0 br-0 b--dotted b--black-30">
+            <b><i>Post History</i></b>
+        </li>
+        {{ range .Params.edits }}
+            <li class="lh-copy pv3 ba bl-0 bt-0 br-0 b--dotted b--black-30"><i>{{- . -}}</i></li>
+        {{ end }}
+    </ul>
+</div>
+{{ end }}

@@ -1,0 +1,10 @@
+{{- $content := .Get "content" | default (.Get 0) -}}
+{{- $author := .Get "author" | default (.Get 1) -}}
+<div class="pa4">
+    <blockquote class="athelas ml0 mt0 pl4 black-90 bl bw2 b--blue">
+      <p class="f6=5 f5-m f5-l lh-copy measure mt0">
+        {{ $content }}
+      </p>
+      <cite class="f6 ttu tracked fs-normal">―{{ $author }}</cite>
+    </blockquote>
+  </div>

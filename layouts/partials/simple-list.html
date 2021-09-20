@@ -1,0 +1,24 @@
+{{ $featured_image := partial "func/GetFeaturedImage.html" . }}
+
+
+<section class="w-100 mw8">
+    <div class="relative w-100 mb4">
+        <article class="dt w-100 bb b--black-05 pb2 mt2" href="{{.Permalink}}">
+        <div class="dtc w2 w3-ns v-mid">
+            {{ if $featured_image }}
+            {{/* Trimming the slash and adding absURL make sure the image works no matter where our site lives */}}
+            {{ $featured_image := (trim $featured_image "/") | absURL }}
+                <img src="{{ $featured_image }}" class="ba b--black-10 db br2 w2 w3-ns h2 h3-ns" alt="{{ .Title }}" />
+            {{ else }}
+                <img src="/images/hero/landing.jpg" class="ba b--black-10 db br2 w2 w3-ns h2 h3-ns" alt="{{ .Title }}"/>
+            {{ end }}
+            
+        </div>
+        <div class="dtc v-mid pl3">
+            <a class="f4 fw6 db black link dim" href="{{.Permalink}}"><h1 class="f6 f5-ns fw6 lh-title black mv0">{{ .Title }}</h1></a>
+
+            <h2 class="f6 fw4 mt0 mb0 black-60">{{ .Summary }}</h2>
+        </div>
+        </article>
+    </div>
+</section>        

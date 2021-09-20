@@ -1,0 +1,61 @@
+{{ $featured_image := partial "func/GetFeaturedImage.html" . }}
+{{ if $featured_image }}
+    {{ $featured_image := (trim $featured_image "/") | absURL }}
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": {{.Permalink}}
+      },
+      "headline": "{{ .Title }}",
+      "image": [
+        {{ $featured_image }}
+      ],
+      "datePublished": "{{ .Date }}",
+      "dateModified": "{{ .Date }}",
+      "author": {
+        "@type": "Person",
+        "name": "ranuzz"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "makeall.dev",
+        "logo": {
+          "@type": "ImageObject",
+          "url": {{ .Site.Params.hidden_site_logo }}
+        }
+      }
+    }
+</script>
+{{ else }}
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": {{.Permalink}}
+      },
+      "headline": "{{ .Title }}",
+      "image": [
+        "https://makeall.dev/images/hero/landing.jpg"
+      ],
+      "datePublished": "{{ .Date }}",
+      "dateModified": "{{ .Date }}",
+      "author": {
+        "@type": "Person",
+        "name": "ranuzz"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "makeall.dev",
+        "logo": {
+          "@type": "ImageObject",
+          "url": {{ .Site.Params.hidden_site_logo }}
+        }
+      }
+    }
+</script>
+{{ end }}

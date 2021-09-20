@@ -1,0 +1,10 @@
+<div>
+    {{ $tags := $.Site.Taxonomies.tags.ByCount }}
+    {{ range $tags }}
+    {{ if .Term }}
+        {{ $tagURL := printf "tags/%s" .Term | relURL }}
+        <a class="f6 no-underline br-pill ba ph3 pv2 mb2 dib dark-gray ml2 mr2" href="{{ $tagURL }}">{{ .Term }} <span>({{ .Count }})</span></a>
+        {{ end }}
+    {{ end }}
+</div>
+    

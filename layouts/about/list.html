@@ -1,0 +1,26 @@
+{{ define "header" }}
+  {{ partial "page-header.html" . }}
+{{ end }}
+{{ define "main" }}
+<article class="flex-l flex-wrap justify-between mw8 center ph3 w-100">
+  <header class="mt4 w-100">
+    <h1 class="f1 athelas mt3 mb1">
+      {{- .Title -}}
+    </h1>
+    <br />
+    <p class="f3 athelas mt3 mb1">{{- .Description -}}</p>
+  </header>
+  
+  <div class="nested-copy-line-height lh-copy {{ $.Param "post_content_classes"  | default "serif"}} f4 nested-links nested-img black pr4-l w-two-thirds-l">
+    <br /><br />
+    {{- .Content -}}
+    
+  </div>
+
+  <aside class="w-30-l mt6-l toc-aside">
+    
+  </aside>
+
+</article>
+
+{{ end }}

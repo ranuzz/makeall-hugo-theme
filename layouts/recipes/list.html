@@ -1,0 +1,40 @@
+{{ define "main" }}
+  <article class="pa3 pa4-ns nested-copy-line-height nested-img">
+    <section class="cf ph3 ph5-l pv3 pv4-l f4 tc-l center measure-wide lh-copy mid-gray">
+      {{- .Content -}}
+    </section>
+    <div class="pa3 pa4-ns w-100 w-70-ns center">
+    <section class="w-100 mw8">
+      {{ range .Paginator.Pages }}
+        <div class="relative w-100 mb4">
+          <article class="bt bb b--black-10">
+            <div class="db pv4 ph3 ph0-l no-underline black-grey">
+              <div class="flex flex-column flex-row-ns">
+                {{ if .Params.Image }}
+                  <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
+                    <img src="{{.Permalink}}{{ .Params.Image }}" class="db" alt="image from {{ .Title }}">
+                  </div>
+                {{ end }}
+                <div class="w-100 w-60-ns pl3-ns">
+                  <h1 class="f3 fw1 baskerville mt0 lh-title">
+                    <a href="{{.Permalink}}" class="color-inherit dim link">
+                      {{ .Title }}
+                    </a>
+                  </h1>
+                  <p class="f6 f5-l lh-copy">
+                    {{ .Summary }}
+                  </p>
+          
+                  <!--<p class="f6 lh-copy mv0">By {{ .Author }}</p>-->
+          
+                </div>
+              </div>
+            </div>
+          </article>          
+        </div>
+      {{ end }}
+    </section>
+    </div>
+    {{- template "_internal/pagination.html" . -}}
+  </article>
+{{ end }}

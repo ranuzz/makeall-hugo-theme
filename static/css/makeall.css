@@ -1,0 +1,67 @@
+
+/* sticky toc :https://www.bram.us/2020/01/10/smooth-scrolling-sticky-scrollspy-navigation/ */
+
+html {
+	scroll-behavior: smooth;
+}
+
+.toc-aside {
+	position: sticky;
+	top: 2rem;
+	align-self: start;
+}
+
+/* sticky toc */
+
+/* toc link style */
+
+.nested-links-toc {
+    font-family: 'avenir next';
+}
+
+.nested-links-toc a {
+    color:#000000;
+    transition:color .15s ease-in;
+    text-decoration: none;
+}
+    
+.nested-links-toc a:focus,.nested-links-toc a:hover
+{
+    color: #d3d3d3;
+    transition:color .15s ease-in;
+    text-decoration: none;
+}
+
+.makeall-title {
+    font-family: 'Courier Next',
+    courier,
+    monospace;
+    font-weight: bolder;
+}
+
+.makeall-ln3 {
+    --max-lines: 3;
+    max-height: calc(var(--lh) * var(--max-lines));
+    overflow: hidden;
+}
+
+.makeall-ln2 {
+    --max-lines: 2;
+    max-height: calc(var(--lh) * var(--max-lines));
+    overflow: hidden;
+}
+
+
+@media screen and (max-width: 60em) {
+
+    .makeall-hide-small {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 30em) {
+
+    .makeall-hide-big {
+        display: none;
+    }
+}

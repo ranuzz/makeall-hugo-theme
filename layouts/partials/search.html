@@ -1,0 +1,146 @@
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6"></script>
+<script>
+    var allPosts = [];
+{{ $section := where .Site.RegularPages "Section" "in" (slice "posts" "minis" "notepad" "series" ) }}
+{{ range ($section) }}
+allPosts.push(
+    {
+        'title': {{ .Title }},
+        'summary': {{ .Summary }},
+        'content': {{ .Content }},
+        'link': {{ .Permalink }}
+    }
+);
+{{ end }}
+
+const options = {
+  // isCaseSensitive: false,
+  // includeScore: false,
+  // shouldSort: true,
+  // includeMatches: false,
+  // findAllMatches: false,
+  // minMatchCharLength: 1,
+  // location: 0,
+  // threshold: 0.6,
+  // distance: 100,
+  // useExtendedSearch: false,
+  // ignoreLocation: false,
+  // ignoreFieldNorm: false,
+  keys: [
+    "title",
+    "summary",
+    "content",
+    "link"
+  ]
+};
+</script>
+<style>
+.modal {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        visibility: hidden;
+        transform: scale(1.1);
+        transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+        z-index: 9999;
+}
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 1rem 1.5rem;
+    width: vw/2;
+    border-radius: 0.5rem;
+}
+.close-button {
+    float: right;
+    width: 1.5rem;
+    line-height: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    background-color: lightgray;
+}
+.close-button:hover {
+    background-color: darkgray;
+}
+.show-modal {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1.0);
+    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+</style>
+
+<div class="{{ .Site.Params.background_color_body_class | default "bg-black" }} center pa4 br2 ba b--black-10">
+    <fieldset class="cf bn ma0 pa0">
+    <legend class="pa0 f5 f4-ns mb3 black-80">Search Blog</legend>
+    <div class="cf">
+        <label class="clip" for="email-address">Email Address</label>
+        <input class="f6 f5-l input-reset bn fl black-80 bg-white pa3 lh-solid w-100 w-75-m w-80-l br2-ns br--left-ns" placeholder="Search..." type="text" name="search-input" value="" id="search-input">
+        <button class="f6 f5-l button-reset fl pv3 tc bn bg-animate bg-black-70 hover-bg-black white pointer w-100 w-25-m w-20-l br2-ns br--right-ns" onclick="searchBlog()" >Search</button>
+    </div>
+    </fieldset>
+</div>
+
+<div id="search-result" class="modal">
+    <div class="modal-content">
+        <span id="search-result-close" onclick="toggleModal()" class="close-button">&times;</span>
+        <div id="search-result-output"></div>
+    </div>
+</div>
+
+<script>
+const fuse = new Fuse(allPosts, options);
+
+function toggleModal() {
+    const searchResultModal = document.getElementById("search-result");
+    searchResultModal.classList.toggle("show-modal");
+}
+
+function windowOnClick(event) {
+    const searchResultModal = document.getElementById("search-result");
+    if (event.target === searchResultModal) {
+        toggleModal();
+    }
+}
+
+window.addEventListener('click', windowOnClick);
+
+function searchBlog() {
+
+    let searchInput = document.getElementById('search-input');
+    if (searchInput === undefined || searchInput === null) {
+        return;
+    }
+
+    let searchResutlOutput = document.getElementById('search-result-output');
+    if (searchResutlOutput === undefined || searchResutlOutput === null) {
+        return;
+    }
+
+    let pattern = searchInput.value;
+    let searchResult = fuse.search(pattern);
+    
+    let htmlContent = "<h3>Search Result For : <i>" + pattern + "</i></h3>";
+    htmlContent += "<ul class='pl0 mr3'>";
+
+    let maxResult = searchResult.length >= 5 ? 5 : searchResult.length;
+    for (var i = 0; i < maxResult; i++) {
+        htmlContent += "<li class='list f6 f4-ns fw4 dib pr3'><a class='makeall-title hover-black no-underline black' href='";
+        htmlContent += searchResult[i].item.link;
+        htmlContent += "'title='" + searchResult[i].item.title + "'page'>";
+        htmlContent += searchResult[i].item.title;
+        htmlContent += '</a></li><hr />';
+    }
+    htmlContent += "</ul>";
+    searchResutlOutput.innerHTML = htmlContent;
+    toggleModal();
+}
+</script>

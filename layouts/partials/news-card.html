@@ -1,0 +1,25 @@
+{{ $featured_image := partial "func/GetFeaturedImage.html" . }}
+
+<article class="aspect-ratio--object center bg-white br3 pa1 pa3-ns mv1 ba b--black-10">
+    <a href="{{.Permalink}}" class="color-inherit dim link">
+        <div class="tc">
+            
+            {{ if $featured_image }}
+                {{/* Trimming the slash and adding absURL make sure the image works no matter where our site lives */}}
+                {{ $featured_image := (trim $featured_image "/") | absURL }}
+                <img src="{{ $featured_image }}" class="br-100 h3 w3 h4-l w4-l  pa1 ba b--black-10" alt="image from {{ .Title }}">
+            {{ else }}    
+                <img src="/images/hero/landing.jpg" class="br-100 h3 w3 h4-l w4-l  pa1 ba b--black-10" alt="image from {{ .Title }}">
+            {{ end }}
+            
+            <h3 class="f6 f3-l">
+                {{ .Title }}
+            </h3>
+            <hr class="mw3 bb bw1 b--black-10">
+        </div>
+            <div class="lh-copy measure center f6 black-70 dn db-l pl1">
+                {{ .Summary  }}
+            </div>
+        </a>
+        <small class="gray db tc tl-l absolute bottom-0 pb2 pl1">{{- partial "tags.html" . -}} <!-- <time>{{ dateFormat "Monday, Jan 2, 2006" .Date }}</time>--></small>
+</article>

@@ -1,0 +1,46 @@
+<nav class="pv1 ph3" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <div class="flex-l items-center">
+      <a href="{{ .Site.Home.RelPermalink }}" class="makeall-title f3 fw2 hover-white no-underline black dib">
+        {{ with .Site.Params.site_logo }}
+          <img src="{{ . }}" class="w100 mw5-ns" alt="{{ $.Site.Title }}" />
+        {{ else }}
+          <div class="makeall-title">{{ .Site.Title }}</div>
+        {{ end }}
+      </a>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      {{ if .Site.Menus.main }}
+        <ul class="pl0 mr3">
+          {{ range .Site.Menus.front }}
+          <li class="list f6 f4-ns fw4 dib pr3">
+            <a class="makeall-title hover-white no-underline black" href="{{ .URL }}" title="{{ .Name }} page">
+             {{ .Name }}
+            </a>
+          </li>
+          {{ end }}        
+        </ul>
+      {{ end }}
+    </div>
+    <div class="flex-l items-center">
+      {{ partial "i18nlist.html" . }}
+      {{ if .Site.Menus.main }}
+        <ul class="pl0 mr3">
+          {{ range .Site.Menus.main }}
+          <li class="list f6 f4-ns fw4 dib pr3">
+            <a class="makeall-title hover-white no-underline black" href="{{ .URL }}" title="{{ .Name }} page">
+             {{ .Name }}
+            </a>
+          </li>
+          {{ end }}        
+        </ul>
+      {{ end }}
+      <!--
+      <a id="makeall-dark-mode-toggle" class="makeall-title hover-white no-underline black light-mode">
+        <img src="/images/svg/sun.svg" alt="light-dark-mode"/>
+      </a>
+    -->
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      {{ partialCached "social-follow-header.html" . }}
+    </div>
+  </div>
+</nav>

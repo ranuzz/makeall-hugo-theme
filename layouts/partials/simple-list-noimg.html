@@ -1,0 +1,11 @@
+<section class="w-100 mw8">
+    <div class="relative w-100 mb4">
+        <article class="dt w-100 bb b--black-05 pb2 mt2" href="{{.Permalink}}">
+            <div class="dtc v-mid pl">
+                <a class="f3 fw6 db black link dim" href="{{.Permalink}}"><h1 class="f3 f3-ns fw6 lh-title black mv0">{{ .Title }}</h1></a>
+                <h2 class="f5 fw5 mt0 mb0 mv1 black">{{ .Summary }}</h2>
+                {{ partial "tags.html" .}}
+            </div>
+        </article>
+    </div>
+</section>        

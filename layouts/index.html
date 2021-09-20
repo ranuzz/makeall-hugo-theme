@@ -1,0 +1,55 @@
+{{ define "header" }}
+   {{/* We can override any block in the baseof file be defining it in the template */}}
+  {{ partial "page-header.html" . }}
+{{ end }}
+
+{{ define "main" }}
+<article>
+  <header class="{{ .Site.Params.background_color_class | default "bg-black" }} sans-serif">
+    <div class="mw9 center pa4 pt5-ns ph7-l">
+      <h3 class="f2 f1-m f-headline-l measure-narrow lh-title mv0">
+        <span class="bg-black-90 lh-copy white pa1 tracked-tight">
+          Title
+        </span>
+      </h3>
+      <h4 class="f3 fw1 georgia i">tagline</h4>
+      <h5 class="f6 ttu tracked black-80">By author</h5>
+      
+    </div>
+    
+  </header>
+  
+</article>
+<article class="flex-l flex-wrap justify-between mw8 center w-90">
+  <div class="nested-copy-line-height lh-copy {{ $.Param "post_content_classes"  | default "serif"}} f4 black pr4-l w-100">
+
+    <h1 class="flex-none">
+      
+    </h1>
+
+    {{ $section := where .Site.RegularPages "Section" "in" (slice "posts") }}
+    {{ range (first 5 $section) }}
+      {{ partial "simple-list-noimg.html" . }}
+    {{ end }}
+
+    <br />
+    <hr />
+
+
+    <h1 class="flex-none">
+      Tags
+    </h1>
+      {{ partial "tag-cloud.html" . }}
+      
+    <br />
+
+    {{ partial "search.html" .}}
+
+  </div>
+</article>
+
+
+<!-- <div class="cf w-100 tc pt5 ph3 center">
+  {{ partial "tinyletter.html" . }}
+</div> -->
+{{ end }}

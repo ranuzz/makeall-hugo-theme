@@ -1,0 +1,7 @@
+<!--<footer class="bg-moon-gray pv4 ph3 ph5-m ph6-l black">-->
+<footer class="{{ .Site.Params.background_color_accent_class | default "bg-black" }} bottom-0 w-100 pa3" role="contentinfo">
+    <small class="makeall-title f6 db tc">© {{ now.Format "2006"}} <b class="ttu">{{ with .Site.Copyright | default .Site.Title }} {{ . | safeHTML }} {{ end }}</b>., All Rights Reserved</small>
+    <div class="tc mt3">
+        <div>{{ partial "social-follow.html" . }}</div>
+    </div>
+</footer>
