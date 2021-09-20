@@ -4,7 +4,7 @@
 name = "MakeAll Gohugo Theme"
 license = "MIT"
 licenselink = "https://github.com/ranuzz/makeall-hugo-theme/blob/main/LICENSE.md"
-description = "A Base theme for building full featured Hugo sites"
+description = "A Base theme for makeall blogs"
 homepage = "https://github.com/ranuzz/makeall-hugo-theme"
 tags = ["website", "starter", "responsive", "Disqus", "blog", "Tachyons", "Multilingual"]
 features = ["posts", "shortcodes", "related content", "comments"]

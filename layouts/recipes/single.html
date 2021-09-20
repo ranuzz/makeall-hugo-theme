@@ -208,35 +208,11 @@
         </div>
 
         <br />
-        <div class="flex items-center justify-left pa4 bg-moon-gray black">
-          <!--
-            <svg class="w1" data-icon="info" viewBox="0 0 32 32" style="fill:currentcolor">
-              <title>info icon</title>
-              <path d="M16 0 A16 16 0 0 1 16 32 A16 16 0 0 1 16 0 M19 15 L13 15 L13 26 L19 26 z M16 6 A3 3 0 0 0 16 12 A3 3 0 0 0 16 6"></path>
-            </svg>
-          -->
-          <span class="lh-title ml3"><i>
-            Feel free to send me an <a href="mailto:ranuzz@makeall.dev">email</a> for any suggestion or feedback. Follow me on <a href="https://twitter.com/ranuzzzz" target="_blank">twitter</a> and <a href="https://github.com/ranuzz" target="_blank">github</a>.
-          </i></span>
-        </div>
-        <br />
         <!--
           {{- partial "edits.html" . -}}
           <br />
         -->
-        {{ if eq (getenv "HUGO_ENV") "production" | or (eq .Site.Params.env "production")  }}
-          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-          <!-- end-of-page -->
-          <ins class="adsbygoogle"
-              style="display:block"
-              data-ad-client="ca-pub-2419627724765990"
-              data-ad-slot="3378861289"
-              data-ad-format="auto"
-              data-full-width-responsive="true"></ins>
-          <script>
-              (adsbygoogle = window.adsbygoogle || []).push({});
-          </script>      
-        {{ end }}
+
         <div class="mt6 instapaper_ignoref">
         {{ if .Site.DisqusShortname }}
           {{ template "_internal/disqus.html" . }}
