@@ -21,7 +21,7 @@ Install [hugo](https://gohugo.io/getting-started/installing/)
 ### Create Site
 
 ```sh
-hugo new sire your_project
+hugo new site your_project
 ```
 
 ### Hugo mod
@@ -30,10 +30,19 @@ From project's root directory
 
 ```sh
 hugo mod init github.com/<your_user>/<your_project>
+hugo mod get
 ```
 
 ### config.toml
 
 ```toml
 theme = ["github.com/ranuzz/makeall-hugo-theme"]
+```
+
+## build
+
+```sh
+hugo mod get
+hugo
+hugo serve
 ```
