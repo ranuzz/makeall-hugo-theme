@@ -1,13 +1,12 @@
 title = "makeall-demo"
-baseURL = "https://example.com"
+baseURL = "https://makeall.dev"
 languageCode = "en-us"
 theme = "makeall-hugo-theme"
 themesDir = "../.."
 resourceDir = "../resources"
 
 DefaultContentLanguage = "en"
-SectionPagesMenu = "main"
-Paginate = 3 # this is set low for demonstrating with dummy content. Set to a higher number
+Paginate = 8
 googleAnalytics = ""
 enableRobotsTXT = true
 
@@ -18,13 +17,18 @@ enableRobotsTXT = true
 
 [params]
   favicon = ""
-  site_logo = ""
-  description = ""
+  site_logo = "/images/logo/logo32x32.jpeg"
+  author = "ranuzz"
+  contents = ['posts', 'notepad']
+  showtags = false
+  showsearch = true
+  hidden_site_logo = "https://makeall.dev/images/logo/logo.png"
+  description = "Example Site makeall.dev hugo theme"
   facebook = ""
-  twitter = ""
+  twitter = "https://twitter.com/ranuzzzz"
   instagram = ""
   youtube = ""
-  github = ""
+  github = "https://github.com/ranuzz/"
   gitlab = ""
   linkedin = ""
   mastodon = ""
@@ -40,3 +44,30 @@ enableRobotsTXT = true
   show_reading_time = true
   post_content_classes = "avenir bg-washed-red"
   custom_css = ["css/makeall.css"]
+
+
+[menu]
+
+  [[menu.main]]
+    identifier = "posts"
+    name = "Articles"
+    url = "/posts/"
+    weight = 2
+
+  [[menu.main]]
+    identifier = "notepad"
+    name = "Notepad"
+    url = "/notepad/"
+    weight = 3
+
+  [[menu.front]]
+    identifier = "Home"
+    name = "Home"
+    url = "/"
+    weight = 1
+
+  [[menu.front]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 2

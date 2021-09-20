@@ -9,11 +9,11 @@
     <div class="mw9 center pa4 pt5-ns ph7-l">
       <h3 class="f2 f1-m f-headline-l measure-narrow lh-title mv0">
         <span class="bg-black-90 lh-copy white pa1 tracked-tight">
-          Title
+          {{ .Site.Title }}
         </span>
       </h3>
-      <h4 class="f3 fw1 georgia i">tagline</h4>
-      <h5 class="f6 ttu tracked black-80">By author</h5>
+      <h4 class="f3 fw1 georgia i">{{ .Site.Params.description }}</h4>
+      <h5 class="f6 ttu tracked black-80">By {{ .Site.Params.author }}</h5>
       
     </div>
     
@@ -27,23 +27,24 @@
       
     </h1>
 
-    {{ $section := where .Site.RegularPages "Section" "in" (slice "posts") }}
-    {{ range (first 5 $section) }}
+    {{ $section := where .Site.RegularPages "Section" "in" .Site.Params.contents }}
+    {{ range (first .Site.Params.recent_posts_number $section) }}
       {{ partial "simple-list-noimg.html" . }}
     {{ end }}
 
     <br />
-    <hr />
-
-
+    {{ if .Site.Params.showtags }}
     <h1 class="flex-none">
       Tags
     </h1>
       {{ partial "tag-cloud.html" . }}
       
     <br />
+    {{ end }}
 
-    {{ partial "search.html" .}}
+    {{ if .Site.Params.showsearch }}
+      {{ partial "search.html" .}}
+    {{ end }}
 
   </div>
 </article>

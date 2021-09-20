@@ -1,3 +1,3 @@
 module github.com/ranuzz/makeall-hugo-theme
 
-go 1.12
+go 1.16
