@@ -27,11 +27,13 @@
       
     </h1>
 
-    {{ $section := where .Site.RegularPages "Section" "in" .Site.Params.contents }}
-    {{ range (first .Site.Params.recent_posts_number $section) }}
-      {{ partial "simple-list-noimg.html" . }}
+    {{ range .Site.Params.contents }}
+        {{ $section := where $.Site.RegularPages "Section" "in" . }}
+        {{ range (first $.Site.Params.recent_posts_number $section) }}
+        {{ partial "simple-list-noimg.html" . }}
+        {{ end }}
     {{ end }}
-
+    
     <br />
     {{ if .Site.Params.showtags }}
     <h1 class="flex-none">
