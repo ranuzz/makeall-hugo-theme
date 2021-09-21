@@ -52,5 +52,6 @@
     </main>
     {{ block "footer" . }}{{ partialCached "site-footer.html" . }}{{ end }}
     <script src='/js/makeall.js'></script>
+    {{ block "scriptend" . }}{{ partial "scriptend-additions.html" . }}{{ end }}
   </body>
 </html>
