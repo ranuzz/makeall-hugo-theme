@@ -43,6 +43,7 @@ enableRobotsTXT = true
   recent_posts_number = 4
   body_classes = "avenir bg-washed-red"
   show_reading_time = true
+  enablepwa = true
   post_content_classes = "avenir bg-washed-red"
   custom_css = ["css/makeall.css"]
 

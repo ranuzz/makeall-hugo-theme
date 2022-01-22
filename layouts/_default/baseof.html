@@ -15,6 +15,10 @@
       <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
     {{ end }}
 
+    {{ if (eq .Site.Params.enablepwa true ) }}
+      <link rel="manifest" href="/manifest.json">
+    {{ end }}
+
     {{ partial "site-style.html" . }}
 
     {{ range .Site.Params.custom_css }}
@@ -53,5 +57,24 @@
     {{ block "footer" . }}{{ partialCached "site-footer.html" . }}{{ end }}
     <script src='/js/makeall.js'></script>
     {{ block "scriptend" . }}{{ partial "scriptend-additions.html" . }}{{ end }}
+    
+    {{ if (eq .Site.Params.enablepwa true ) }}
+      <script>
+        if('serviceWorker' in navigator) {
+            navigator.serviceWorker
+                .register('/sw.js', { scope: '/' })
+                .then(function(registration) {
+                    console.log('makeall.dev Service Worker Registered');
+                });
+      
+            navigator.serviceWorker
+                .ready
+                .then(function(registration) {
+                    console.log('makeall.dev Service Worker Ready');
+                });
+        }
+      </script>
+    {{ end }}
+
   </body>
 </html>
