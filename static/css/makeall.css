@@ -65,3 +65,11 @@ html {
         display: none;
     }
 }
+
+.makeall-article-list-section {
+    background-color: lightgray;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 5px 5px 2px 1px rgba(80, 80, 87, 0.2);
+    border-radius: 0.5rem;
+}
