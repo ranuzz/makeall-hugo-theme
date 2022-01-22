@@ -1,7 +1,7 @@
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6"></script>
 <script>
     var allPosts = [];
-{{ $section := where .Site.RegularPages "Section" "in" .Site.Params.serchcontents ) }}
+{{ $section := where .Site.RegularPages "Section" "in" .Site.Params.searchcontents }}
 {{ range ($section) }}
 allPosts.push(
     {

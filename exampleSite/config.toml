@@ -20,6 +20,7 @@ enableRobotsTXT = true
   site_logo = "/images/logo/logo32x32.jpeg"
   author = "ranuzz"
   contents = ['posts', 'notepad']
+  searchcontents = ['posts', 'notepad']
   showtags = false
   showsearch = true
   hidden_site_logo = "https://makeall.dev/images/logo/logo.png"
