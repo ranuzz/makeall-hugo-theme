@@ -1,0 +1,7 @@
+.makeall-article-list-section {
+    background-color: rgba(51, 47, 43, 0.2);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 8px 8px 2px 1px rgba(228, 127, 44, 0.2);
+    border-radius: 0.5rem;
+}

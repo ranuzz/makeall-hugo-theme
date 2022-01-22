@@ -1,5 +1,5 @@
 {{ range .Params.tags }}
     <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" href="#" class="link black lh-title">
-        <span class="fw7 underline-hover">#{{- . -}}</span>
+        <span class="fw8 f5 underline-hover">#{{- . -}}</span>
     </a>
 {{ end }}
